@@ -1,0 +1,72 @@
+'use client';
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Local Storage</title>
+    <link rel="stylesheet" href="http://youtube.local/assets/dcode.css">
+    <link rel="shortcut icon" href="http://youtube.local/assets/favicon.ico">
+
+    <style media="screen">
+        input , button{
+            padding: 7px;
+            height: 40px;
+        }
+        fieldset{
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h2 id="title">Local Storage</h2>
+    <fieldset>
+        <legend>Insert Data</legend>
+
+        <input id="inpKey" type="text" placeholder="Enter Key..">
+        <input id="inpValue" type="text" placeholder="Enter value..">
+        <button type="button" id="btnInsert" >Insert Data</button>
+    </fieldset>
+    <fieldset>
+        <legend>Local Storage</legend>
+        <div id="isOutput"></div>
+    </fieldset>
+      
+
+    <script type="text/javascript">
+        //localStorage.setItem("name" , "domenic");
+        // localStorage.removeItem("name")
+        //localStorage.setItem("age" , "30");
+        // console.log(localStorage.getItem("age"));
+        // console.log(localStorage.key(1));
+
+        const inpKey = document.getElementById('inpKey');
+        const inpValue = document.getElementById("inpValue");
+        const btnInsert = document.getElementById("btnInsert");
+        const isOutput = document.getElementById("isOutput");
+
+        btnInsert.onclick = function (){
+            const key = inpKey.value;
+            const value = inpValue.value;
+
+
+            
+
+
+            if(key && value){
+                localStorage.setItem(key , value);
+                location.reload();
+            }
+        };
+
+        for(let i = 0; i < localStorage.length; i++ ){
+            const key = localStorage.key(i);
+            const value = localStorage.getItem(key);
+
+            isOutput.innerHTML += `${key}: ${value}<br />`;
+        }
+
+    </script>
+    
+</body>
+</html>
